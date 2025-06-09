@@ -8,7 +8,7 @@ import services.pet.PetService;
 import services.pet.PetServiceImpl;
 import services.client.ClientService;
 import services.client.ClientServiceImpl;
-import utils.ConsoleUtils;
+
 
 public class PetMenu {
     private final PetService petService = new PetServiceImpl();
@@ -19,7 +19,6 @@ public class PetMenu {
     public void printMenu() {
         int option;
         do {
-//            ConsoleUtils.clearScreen();
             System.out.println("\n--- Gestión de Mascotas ---");
             System.out.println("1. Agregar mascota");
             System.out.println("2. Listar todas las mascotas");

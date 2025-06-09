@@ -5,7 +5,7 @@ import java.util.Scanner;
 import models.Client;
 import services.client.ClientService;
 import services.client.ClientServiceImpl;
-import utils.ConsoleUtils;
+
 
 public class ClientMenu {
     private final ClientService clientService = new ClientServiceImpl();
@@ -15,7 +15,6 @@ public class ClientMenu {
     public void printMenu() {
         int option;
         do {
-//            ConsoleUtils.clearScreen();\
             System.out.println("\n--- Gestión de Clientes ---");
             System.out.println("1. Agregar cliente");
             System.out.println("2. Listar clientes");
