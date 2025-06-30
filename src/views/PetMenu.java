@@ -56,12 +56,12 @@ public class PetMenu {
         if (pets.isEmpty()) {
             System.out.println("❌ No hay mascotas registradas.");
         } else {
-            System.out.printf("%-5s | %-12s | %-10s | %-12s | %-9s | %-5s | %-10s%n",
+            System.out.printf("%-5s | %-12s | %-10s | %-20s | %-9s | %-5s | %-10s%n",
                     "ID", "Nombre", "Especie", "Raza", "Género", "Edad", "ID Cliente");
             System.out.println("-".repeat(80));
 
             for (Pet p : pets) {
-                System.out.printf("%-5d | %-12s | %-10s | %-12s | %-9s | %-5d | %-10d%n",
+                System.out.printf("%-5d | %-12s | %-10s | %-20s | %-9s | %-5d | %-10d%n",
                         p.getId(), p.getName(), p.getSpecies(), p.getRace(),
                         p.getGender(), p.getAge(), p.getIdClient());
             }

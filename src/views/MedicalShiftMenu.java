@@ -52,12 +52,12 @@ public class MedicalShiftMenu {
         if (medicalShifts.isEmpty()) {
             System.out.println("❌ No hay citas médicas registradas.");
         } else {
-            System.out.printf("%-5s | %-15s | %-12s | %-10s | %-12s | %-8s | %-10s%n",
+            System.out.printf("%-5s | %-30s | %-12s | %-10s | %-12s | %-8s | %-10s%n",
                     "ID", "Motivo", "Fecha", "Precio", "Estado", "Pet ID", "Cliente ID");
             System.out.println("-".repeat(90));
 
             for (MedicalShift ms : medicalShifts) {
-                System.out.printf("%-5d | %-15s | %-12s | $%-9.2f | %-12s | %-8d | %-10d%n",
+                System.out.printf("%-5d | %-30s | %-12s | $%-9.2f | %-12s | %-8d | %-10d%n",
                         ms.getId(), ms.getReason(), ms.getDate(), ms.getPrice(),
                         ms.getStatus(), ms.getIdPet(), ms.getIdClient());
             }

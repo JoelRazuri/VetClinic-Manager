@@ -52,12 +52,12 @@ public class MedicalHistoryMenu {
         if (medicalHistories.isEmpty()) {
             System.out.println("❌ No hay historiales médicos registrados.");
         } else {
-            System.out.printf("%-5s | %-12s | %-15s | %-15s | %-15s | %-8s%n",
+            System.out.printf("%-5s | %-12s | %-32s | %-25s | %-25s | %-8s%n",
                     "ID", "Fecha", "Descripción", "Tratamiento", "Vacunas", "Pet ID");
-            System.out.println("-".repeat(85));
+            System.out.println("-".repeat(125));
 
             for (MedicalHistory mh : medicalHistories) {
-                System.out.printf("%-5d | %-12s | %-15s | %-15s | %-15s | %-8d%n",
+                System.out.printf("%-5d | %-12s | %-32s | %-25s | %-25s | %-8d%n",
                         mh.getId(), mh.getDate(), mh.getDescription(), mh.getTreatment(),
                         (mh.getVaccines() != null && !mh.getVaccines().isEmpty()) ? mh.getVaccines() : "N/A",
                         mh.getIdPet());
