@@ -9,6 +9,7 @@ USE vetclinic_manager;
 CREATE TABLE IF NOT EXISTS `client` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
+  `last_name` VARCHAR(255) NOT NULL,
   `phone` VARCHAR(32) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
@@ -76,10 +77,10 @@ CREATE TABLE IF NOT EXISTS `medical_history` (
 
 -- INSERCIÓN DE DATOS DE PRUEBA --
 -- Inserción de datos en la tabla 'client' --
-INSERT INTO `client` (`name`, `phone`, `email`) 
-VALUES 
-	('Juan Pérez', '1234567890', 'juan.perez@email.com'),
-	('María López', '0987654321', 'maria.lopez@email.com');
+INSERT INTO `client` (`name`, `last_name`, `phone`, `email`)
+VALUES
+    ('Juan', 'Pérez', '1234567890', 'juan.perez@email.com'),
+    ('María', 'López', '0987654321', 'maria.lopez@email.com');
 
 -- Inserción de datos en la tabla 'pet' --
 INSERT INTO `pet` (`name`, `species`, `race`, `gender`, `age`, `id_client`) 

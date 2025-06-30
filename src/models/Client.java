@@ -4,13 +4,21 @@ public class Client {
     // Atributos
     private int id;
     private String name;
-    private String lastName;  // Nuevo campo
+    private String lastName;
     protected String phone;
     protected String email;
 
-    // Constructor
+    // Constructor con ID (para cargar desde BD)
     public Client(int id, String name, String lastName, String phone, String email) {
         this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.phone = phone;
+        this.email = email;
+    }
+
+    // Constructor sin ID (para crear nuevos clientes)
+    public Client(String name, String lastName, String phone, String email) {
         this.name = name;
         this.lastName = lastName;
         this.phone = phone;

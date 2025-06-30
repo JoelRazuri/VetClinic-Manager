@@ -10,9 +10,19 @@ public class Pet {
     private int age;
     private int idClient;
 
-    // Constructor
+    // Constructor con ID (para cargar desde BD)
     public Pet(int id, String name, String species, String race, String gender, int age, int idClient) {
         this.id = id;
+        this.name = name;
+        this.species = species;
+        this.race = race;
+        this.gender = gender;
+        this.age = age;
+        this.idClient = idClient;
+    }
+
+    // Constructor sin ID (para crear nuevas mascotas)
+    public Pet(String name, String species, String race, String gender, int age, int idClient) {
         this.name = name;
         this.species = species;
         this.race = race;
@@ -77,7 +87,6 @@ public class Pet {
     public void setIdClient(int idClient) {
         this.idClient = idClient;
     }
-
 
     @Override
     public String toString() {

@@ -5,21 +5,23 @@ import java.util.Scanner;
 import models.Client;
 import services.client.ClientService;
 import services.client.ClientServiceImpl;
-
+import utils.ConsoleUtils;
 
 public class ClientMenu {
     private final ClientService clientService = new ClientServiceImpl();
     private final Scanner scanner = new Scanner(System.in);
-    private static int id = 1;
 
     public void printMenu() {
         int option;
         do {
-            System.out.println("\n--- Gestión de Clientes ---");
+            ConsoleUtils.clearAndShowHeader("Gestión de Clientes");
             System.out.println("1. Agregar cliente");
             System.out.println("2. Listar clientes");
             System.out.println("3. Buscar cliente por ID");
+            System.out.println("4. Actualizar cliente");
+            System.out.println("5. Eliminar cliente");
             System.out.println("0. Volver");
+            System.out.print("\nSelecciona una opción: ");
             option = scanner.nextInt();
             scanner.nextLine();
 
@@ -27,56 +29,70 @@ public class ClientMenu {
                 case 1 -> createClient();
                 case 2 -> readAllClients();
                 case 3 -> findClientById();
+                case 4 -> updateClient();
+                case 5 -> deleteClient();
+                case 0 -> ConsoleUtils.clearScreen();
             }
         } while (option != 0);
     }
 
     private void createClient() {
-        System.out.print("Nombre: ");
-        String name = scanner.nextLine();
-        System.out.print("Apellido: ");
-        String lastName = scanner.nextLine();
-        System.out.print("Teléfono: ");
-        String phone = scanner.nextLine();
-        System.out.print("Email: ");
-        String email = scanner.nextLine();
-
-        Client client = new Client(id, name, lastName, phone, email);
-        clientService.saveClient(client);
-        id++;
-        System.out.println("✔ Cliente agregado.");
+        ConsoleUtils.clearAndShowHeader("Agregar Nuevo Cliente");
+        clientService.createClient();
+        ConsoleUtils.pressEnterToContinue();
     }
 
     private void readAllClients() {
-        List<Client> clients = clientService.listClients();
+        ConsoleUtils.clearAndShowHeader("Lista de Clientes");
 
-        System.out.println("--- Lista de Clientes ---");
+        List<Client> clients = clientService.readAllClients();
 
         if (clients.isEmpty()){
-            System.out.println("La lista de clientes está vacía.");
+            System.out.println("❌ No hay clientes registrados.");
         } else {
-            System.out.printf("%-5s | %-15s | %-15s | %-12s | %-20s%n",
+            System.out.printf("%-5s | %-15s | %-15s | %-12s | %-25s%n",
                     "ID", "Nombre", "Apellido", "Teléfono", "Email");
-            System.out.println("-------------------------------------------------------------------------------");
-
+            System.out.println("-".repeat(80));
 
             for (Client c : clients) {
-                System.out.printf("%-5d | %-15s | %-15s | %-12s | %-20s%n",
+                System.out.printf("%-5d | %-15s | %-15s | %-12s | %-25s%n",
                         c.getId(), c.getName(), c.getLastName(),
                         c.getPhone(), c.getEmail());
             }
         }
+
+        ConsoleUtils.pressEnterToContinue();
     }
 
     private void findClientById() {
-        System.out.print("ID de cliente: ");
+        ConsoleUtils.clearAndShowHeader("Buscar Cliente");
+
+        System.out.print("Ingresa el ID del cliente: ");
         int idClient = scanner.nextInt();
         scanner.nextLine();
+
         Client c = clientService.findClientById(idClient);
+        ConsoleUtils.showSeparator();
+
         if (c != null) {
+            System.out.println("✔ Cliente encontrado:");
             System.out.println(c);
         } else {
-            System.out.println("Cliente no encontrado.");
+            System.out.println("❌ Cliente no encontrado con ID: " + idClient);
         }
+
+        ConsoleUtils.pressEnterToContinue();
+    }
+
+    private void updateClient() {
+        ConsoleUtils.clearAndShowHeader("Actualizar Cliente");
+        clientService.updateClient(0); // Pasar 0 para que muestre la lista
+        ConsoleUtils.pressEnterToContinue();
+    }
+
+    private void deleteClient() {
+        ConsoleUtils.clearAndShowHeader("Eliminar Cliente");
+        clientService.deleteClient(0); // Pasar 0 para que muestre la lista
+        ConsoleUtils.pressEnterToContinue();
     }
 }
